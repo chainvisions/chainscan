@@ -1,4 +1,4 @@
-# Wrapper for etherscan api
+# Wrapper for etherscan/bscscan api
 
 Small wrapper class for some etherscan/bscscan api functions..
 
