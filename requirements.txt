@@ -1,1 +1,2 @@
 python-dotenv>=0.17.0
+pytest>=6.2.3
