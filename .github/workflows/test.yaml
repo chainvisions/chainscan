@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+env:
+  ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
+  BSSCAN_TOKEN: ${{ secrets.BSSCAN_TOKEN }}
 
 jobs:
 
