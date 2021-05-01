@@ -1,5 +1,4 @@
-import pytest
-from cs import Chainscanner
+from chainscan import Chainscanner
 
 
 def test():
