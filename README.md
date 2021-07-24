@@ -1,15 +1,18 @@
-# Wrapper for etherscan/bscscan api
+# Wrapper for Etherscan-based APIs
 
-Small wrapper class for some etherscan/bscscan api functions..
+Chainscan is a wrapper for Etherscan-based APIs.
 
 Currently supports:
 
-- getting first block for a transaction with a deployed contract
-- getting last block for a transaction with a deployed contract
-- getting all accounts that have interacted with a deployed contract
+- Getting first block for a transaction with a deployed contract
+- Getting last block for a transaction with a deployed contract
+- Getting all accounts that have interacted with a deployed contract
 
 ## Installing
 
 ```bash
 pip3 install py-chainscan
 ```
+
+## Attributions
+This project was originally developed by thegismar but is now maintained by me (Chainvisions)
