@@ -9,12 +9,20 @@ class Chainscanner:
     def __init__(self, chain):
         load_dotenv()
 
+        self.targetChain = chain
+
         if chain == 'eth':
             self.apikey = os.getenv('ETHERSCAN_TOKEN')
         elif chain == 'bsc':
             self.apikey = os.getenv('BSCSCAN_TOKEN')
+        elif chain == 'polygon':
+            self.apikey = os.getenv('POLYGONSCAN_TOKEN')
+        elif chain == 'ftm':
+            self.apikey = os.getenv('FTMSCAN_TOKEN')
+        elif chain == 'heco':
+            self.apikey = os.getenv('HECOINFO_TOKEN')
         else:
-            raise ValueError('chain must be either eth or bsc')
+            raise ValueError('Unsupported chain')
 
     def get_first_block(self, contract):
         return self._get_block(contract, 'asc')
@@ -64,11 +72,27 @@ class Chainscanner:
 
     def _call_api(self, module, action, address, first_block, last_block, sort):
 
-        url = f'https://api.etherscan.io/api?module={module}&action={action}&' \
+        self.targetUrl = ''
+
+        if self.targetChain == 'eth':
+            self.targetUrl = 'https://api.etherscan.io'
+        elif self.targetChain == 'bsc':
+            self.targetUrl = 'https://api.bscscan.com'
+        elif self.targetChain == 'polygon':
+            self.targetUrl = 'https://api.polygonscan.com'
+        elif self.targetChain == 'ftm':
+            self.targetUrl = 'https://api.ftmscan.com'
+        elif self.targetChain == 'heco':
+            self.targetUrl = 'https://api.hecoinfo.com'
+        else:
+            raise ValueError('Error with desired chain: ' + self.targetChain)
+
+        url = f'https://{self.targetUrl}/api?module={module}&action={action}&' \
               f'address={address}&startblock={first_block}&endblock={last_block}' \
               f'&sort={sort}&apikey={self.apikey}'
         r = requests.get(url).json()
 
-        assert r['status'] == '1', 'error when calling etherscan api'
+        assert r['status'] == '1', 'Error when calling API'
 
         return r['result']
+ 
