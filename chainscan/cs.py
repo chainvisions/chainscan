@@ -21,6 +21,8 @@ class Chainscanner:
             self.apikey = os.getenv('FTMSCAN_TOKEN')
         elif chain == 'heco':
             self.apikey = os.getenv('HECOINFO_TOKEN')
+        elif chain == 'optimism':
+            self.apikey = os.getenv('OPETHERSCAN_TOKEN')
         else:
             raise ValueError('Unsupported chain')
 
@@ -31,7 +33,6 @@ class Chainscanner:
         return self._get_block(contract, 'desc')
 
     def get_accounts(self, contract):
-
         first = self.get_first_block(contract)
         last = self.get_last_block(contract)
         block = first
@@ -59,7 +60,6 @@ class Chainscanner:
         return s
 
     def _get_block(self, contract, sort):
-
         module = 'account'
         action = 'txlist'
         address = contract
@@ -71,7 +71,6 @@ class Chainscanner:
         return int(result[0]['blockNumber'])
 
     def _call_api(self, module, action, address, first_block, last_block, sort):
-
         self.targetUrl = ''
 
         if self.targetChain == 'eth':
@@ -84,6 +83,8 @@ class Chainscanner:
             self.targetUrl = 'https://api.ftmscan.com'
         elif self.targetChain == 'heco':
             self.targetUrl = 'https://api.hecoinfo.com'
+        elif self.targetChain == 'optimism':
+            self.targetUrl = 'https://api-optimistic.etherscan.io'
         else:
             raise ValueError('Error with desired chain: ' + self.targetChain)
 
