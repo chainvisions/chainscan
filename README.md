@@ -1,6 +1,6 @@
-# Wrapper for Etherscan-based APIs
+# Wrapper for Blockscan APIs
 
-Chainscan is a wrapper for Etherscan-based APIs.
+Chainscan is a wrapper for Blockscan APIs.
 
 Currently supports:
 
@@ -15,6 +15,8 @@ Chainscan supports the following chains:
 - Polygon Mainnet
 - Fantom Opera
 - Heco Mainnet
+- Optimistic Ethereum
+- Hoo Smart Chain
 
 ## Installing
 
