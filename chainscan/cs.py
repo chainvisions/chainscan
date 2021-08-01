@@ -23,6 +23,8 @@ class Chainscanner:
             self.apikey = os.getenv('HECOINFO_TOKEN')
         elif chain == 'optimism':
             self.apikey = os.getenv('OPETHERSCAN_TOKEN')
+        elif chain == 'hsc':
+            self.apikey = os.getenv('HOOSCAN_TOKEN')
         else:
             raise ValueError('Unsupported chain')
 
@@ -85,6 +87,8 @@ class Chainscanner:
             self.targetUrl = 'https://api.hecoinfo.com'
         elif self.targetChain == 'optimism':
             self.targetUrl = 'https://api-optimistic.etherscan.io'
+        elif self.targetChain == 'hsc':
+            self.targetUrl = 'https://api.hooscan.com'
         else:
             raise ValueError('Error with desired chain: ' + self.targetChain)
 
